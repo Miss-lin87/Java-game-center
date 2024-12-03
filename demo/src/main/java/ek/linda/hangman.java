@@ -1,8 +1,15 @@
-
+package ek.linda;
 import java.util.Arrays;
 
-public class hangman{
-    static String[] words(){
+public class hangman implements Game{
+
+    @Override
+    public String run_game(){
+        hangman_game();
+        return "";
+    }
+    
+    String[] words(){
         String[] words = {"dog","cow","cat","horse","donkey","tiger","lion","panther",
                        "leopard","cheetah","bear","elephant","turtle","tortoise","crocodile",
                        "rabbit","porcupine","hare","hen","pigeon","albatross","crow","fish",
@@ -17,9 +24,9 @@ public class hangman{
                        "racoon","mole","duck","swan","lynx","lizard","elk","boar",
                        "lemur","mule","baboon","mammoth","whale","rat","snake","peacock"};
     return words;
-}
-
-    static String pick_random_word(String[] words){
+    }
+    
+    String pick_random_word(String[] words){
         String random_pick;
         int number_of_words = 0;
         for (String elem : words) {
@@ -29,7 +36,7 @@ public class hangman{
         return random_pick;
     }
     
-    static String make_hidden_word(String Word){
+    String make_hidden_word(String Word){
         String[] wordlist = Word.split("");
         String splitword = "";
         for (Object elem : wordlist) {
@@ -38,7 +45,7 @@ public class hangman{
         return splitword;
     }
     
-    static String reveal_word(String guess, String word, String hidden){
+    String reveal_word(String guess, String word, String hidden){
         int index = 0;
         for (String letter : word.split("")) {
             if (guess.equals(letter)) {
@@ -49,14 +56,14 @@ public class hangman{
         return hidden;
     }
     
-    static int game_setup(String word){
+    int game_setup(String word){
         System.out.println("Welcome to hangman. \nHint to the word is Animal");
         int guesses = (word.length()+3);
         System.out.println("The computer has picked a word");
         return guesses;
     }
 
-    static String game_loop(String word, String hidden, int chanses){
+    String game_loop(String word, String hidden, int chanses){
         int original_chanses = chanses;
         do{
             if (chanses == 0){
@@ -76,13 +83,14 @@ public class hangman{
     return "Congratulations, you win.\nAnd it took you " + (original_chanses - chanses) + " tries";
     }
 
-public static void main(String[] args) {
-    String word = pick_random_word(words());
-    boolean game_on = true;
-    do {
-        System.out.println(game_loop(word, make_hidden_word(word), game_setup(word)));
+    void hangman_game() {
+        hangman game = new hangman();
+        String word = game.pick_random_word(game.words());
+        boolean game_on = true;
+        do {
+            System.out.println(game.game_loop(word, game.make_hidden_word(word), game.game_setup(word)));
             if (!general_functions.regex_find_text("Yes, yes",(general_functions.ask_the_player("Play again? Yes/No")))){game_on=false;}
-            else {main(args);}
-    } while (game_on == true);
-}
+            else {hangman_game();}
+        } while (game_on == true);
+    }
 }
