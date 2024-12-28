@@ -1,12 +1,13 @@
-package ek.linda;
+package ek.linda.games;
 import java.util.Arrays;
+
+import ek.linda.Game;
 
 public class hangman implements Game{
 
     @Override
-    public String run_game(){
+    public void run_game(){
         hangman_game();
-        return "";
     }
     
     String[] words(){
@@ -28,19 +29,15 @@ public class hangman implements Game{
     
     String pick_random_word(String[] words){
         String random_pick;
-        int number_of_words = 0;
-        for (String elem : words) {
-            number_of_words ++;
-        }
-        random_pick = words[general_functions.random_number_range(0, number_of_words)];
+        random_pick = words[general_functions.random_number_range(0, words.length)];
         return random_pick;
     }
     
     String make_hidden_word(String Word){
         String[] wordlist = Word.split("");
         String splitword = "";
-        for (Object elem : wordlist) {
-            splitword = splitword + "_";
+        for (@SuppressWarnings("unused") String elem : wordlist) {
+            splitword += "_";
         }
         return splitword;
     }

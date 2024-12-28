@@ -1,23 +1,23 @@
-package ek.linda;
+package ek.linda.games;
 import java.util.ArrayList;
+import java.util.List;
+
+import ek.linda.Game;
 
 public class rock_papper_scissors implements Game {
 
     @Override
-    public String run_game(){
+    public void run_game(){
         RPS_game();
-        return "";
     }
 
     String valid_player(String player_choise){
-        ArrayList<String> player_inputs = new ArrayList<>();
-        player_inputs.add("Rock");
-        player_inputs.add("Papper");
-        player_inputs.add("Scissors");
+        ArrayList<String> player_inputs = new ArrayList<>(List.of("Rock", "Papper", "Scissors"));
         if (!player_inputs.contains(player_choise)) {
             return valid_player(general_functions.ask_the_player("Invalid input. \nPlease slect Rock, Papper or Scissors"));
         }
-    return player_choise;}
+    return player_choise;
+    }
 
     String computer_pick(){
         int number = general_functions.computer_random(3);
@@ -27,7 +27,8 @@ public class rock_papper_scissors implements Game {
             case 1 -> pick = "Papper";
             case 2 -> pick = "Scissors";
         }
-        return pick;}
+        return pick;
+    }
 
     String comparison(String computer, String player){
         String result;
@@ -37,7 +38,8 @@ public class rock_papper_scissors implements Game {
             result = "You win";}
         else{
             result = "You lose";}
-    return result;}
+    return result;
+}
 
     void RPS_game() {
         rock_papper_scissors game = new rock_papper_scissors();

@@ -1,5 +1,5 @@
 package ek.linda;
 
 public interface Game {
-    String run_game();
+    void run_game();
 }

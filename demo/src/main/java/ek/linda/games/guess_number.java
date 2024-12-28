@@ -1,12 +1,13 @@
-package ek.linda;
+package ek.linda.games;
 import java.util.Objects;
+
+import ek.linda.Game;
 
 public class guess_number implements Game{
 
     @Override
-    public String run_game(){
+    public void run_game(){
         guess_number_game();
-        return "";
     }
 
     String higher_or_lower(int Computer, int Guess){
@@ -64,6 +65,6 @@ public class guess_number implements Game{
             if (!general_functions.regex_find_text("Yes, yes",(general_functions.ask_the_player("Play again? Yes/No")))){
                 game_on=false;
             }
-        } while (game_on=true);
+        } while (game_on == true);
     }
 }

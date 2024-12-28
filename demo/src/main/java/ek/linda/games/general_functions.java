@@ -1,4 +1,4 @@
-package ek.linda;
+package ek.linda.games;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -18,22 +18,26 @@ public class general_functions {
         Pattern sertch = Pattern.compile(text_seartch);
         Matcher text = sertch.matcher(text_input);
         boolean found = text.find();
-        return found;}
+        return found;
+    }
 
     public static String ask_the_player(String text_output){
+        String player_input;
         Scanner player = new Scanner(System.in);
         System.out.println(text_output);
-        String player_input = player.nextLine();
+        player_input = player.nextLine();
         return player_input.substring(0, 1).toUpperCase() + player_input.substring(1).toLowerCase();}
     
     public static int computer_random(int max){
         int random_pick = (int)(Math.random()*max);
-        return random_pick;}
+        return random_pick;
+    }
 
     public static int random_number_range(int start, int stop){
         int value = (int)(Math.random()*stop);
         while (value < start){return random_number_range(start, stop);}
-        return value;}
+        return value;
+    }
 
     public static HashSet<Integer> create_hash_int_range(int start, int stop){
         HashSet<Integer> range_hash = new HashSet<>();
@@ -42,5 +46,6 @@ public class general_functions {
             start ++;
         }
         while (start<=stop);
-    return range_hash;}
+        return range_hash;
+    }
 }
