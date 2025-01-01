@@ -11,6 +11,9 @@ import ek.linda.games.rock_papper_scissors;
 public class main_menu{
 
     public static void main(String[] args) {
+        /**This is the main game function. This will ask the player for a specific game and then call on that game bases on a HashMap.
+         * Whenever the player is returned to the function it will ask if the player wants to play a new game.
+         */
         String[] options = {"Guess the number","Hangman","Rock papper scissors","Numbers game"};
         boolean game_on = true;
         Map<String, Game> games = Map.of("Guess the number", new guess_number(), "Hangman", new hangman(), "Rock papper scissors", new rock_papper_scissors(), "Numbers game", new numbers_game());

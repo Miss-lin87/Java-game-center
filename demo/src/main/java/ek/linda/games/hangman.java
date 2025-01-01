@@ -11,6 +11,9 @@ public class hangman implements Game{
     }
     
     String[] words(){
+        /**Just a function that returns a String[] with a lot or words.
+         * Can be expanded if needed.
+         */
         String[] words = {"dog","cow","cat","horse","donkey","tiger","lion","panther",
                        "leopard","cheetah","bear","elephant","turtle","tortoise","crocodile",
                        "rabbit","porcupine","hare","hen","pigeon","albatross","crow","fish",
@@ -28,21 +31,21 @@ public class hangman implements Game{
     }
     
     String pick_random_word(String[] words){
-        String random_pick;
-        random_pick = words[general_functions.random_number_range(0, words.length)];
-        return random_pick;
+        /**returns a random word form the input String[] */
+        return words[general_functions.random_number_range(0, words.length)];
     }
     
     String make_hidden_word(String Word){
-        String[] wordlist = Word.split("");
+        /**Returns a hidden word of the input word. The hidden word consists of only _ */
         String splitword = "";
-        for (@SuppressWarnings("unused") String elem : wordlist) {
+        for (@SuppressWarnings("unused") String split : Word.split("")) {
             splitword += "_";
         }
         return splitword;
     }
     
     String reveal_word(String guess, String word, String hidden){
+        /**Function to reveal the part of the word that was guessed. */
         int index = 0;
         for (String letter : word.split("")) {
             if (guess.equals(letter)) {
@@ -54,18 +57,24 @@ public class hangman implements Game{
     }
     
     int game_setup(String word){
+        /**This will welcome the player to the game and then output the words leanth+3
+         * This is used to create the chanses the player will get.
+         */
         System.out.println("Welcome to hangman. \nHint to the word is Animal");
-        int guesses = (word.length()+3);
         System.out.println("The computer has picked a word");
-        return guesses;
+        return word.length()+3;
     }
 
     String game_loop(String word, String hidden, int chanses){
+        /**The actual game loop. Takes in the hidden word, the actual word and the chanses.
+         * Stops if the hidden word matches the word or if chanses goes to 0
+         */
         int original_chanses = chanses;
         do{
             if (chanses == 0){
-                return "Sorry you lose the game. \nThe secet word was " + word;}
-            else{
+                return "Sorry you lose the game. \nThe secet word was " + word;
+            }
+            else {
                 System.out.println("Total number of guesses left: " + chanses + "\n" + Arrays.toString(hidden.split("")));
                 String guess = general_functions.ask_the_player("Please make a guess: ").toLowerCase();
                 while (hidden.contains(guess)){
@@ -81,11 +90,13 @@ public class hangman implements Game{
     }
 
     void hangman_game() {
-        hangman game = new hangman();
-        String word = game.pick_random_word(game.words());
+        /**This calls the actial game. Picks a random word and makes the hidden variant of that word.
+         * Will call the game setup function and after its finished ask for a new game.
+         */
+        String word = pick_random_word(words());
         boolean game_on = true;
         do {
-            System.out.println(game.game_loop(word, game.make_hidden_word(word), game.game_setup(word)));
+            System.out.println(game_loop(word, make_hidden_word(word), game_setup(word)));
             if (!general_functions.regex_find_text("Yes, yes",(general_functions.ask_the_player("Play again? Yes/No")))){game_on=false;}
             else {hangman_game();}
         } while (game_on == true);

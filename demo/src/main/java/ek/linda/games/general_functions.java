@@ -6,8 +6,11 @@ import java.util.regex.Pattern;
 
 public class general_functions {
     public static String regex_spell_correct(String[] text_input, String text_player){
+        /**This takes a String[] and the player input and compares if the player input
+         * is in the given String. Used for options.
+         */
         for (String elem : text_input) {
-            if (regex_find_text(elem, text_player) == true){
+            if (regex_find_text(elem, text_player)){
                 return elem;
             }
         }
@@ -15,31 +18,40 @@ public class general_functions {
     }
 
     public static boolean regex_find_text(String text_input, String text_seartch){
+        /**Simpel regex finder to find a specific input in the seartch text */
         Pattern sertch = Pattern.compile(text_seartch);
         Matcher text = sertch.matcher(text_input);
-        boolean found = text.find();
-        return found;
+        return text.find();
     }
 
+    @SuppressWarnings("ConvertToTryWithResources")
     public static String ask_the_player(String text_output){
-        String player_input;
+        /**A finction to ask the player for an input.
+         * The text output is the string the player will se. 
+         * The output will convert the string the player enters to have the first letter capitalized.
+         */
         Scanner player = new Scanner(System.in);
         System.out.println(text_output);
-        player_input = player.nextLine();
+        String player_input = player.nextLine();
+        player.close();
         return player_input.substring(0, 1).toUpperCase() + player_input.substring(1).toLowerCase();}
     
     public static int computer_random(int max){
-        int random_pick = (int)(Math.random()*max);
-        return random_pick;
+        /**Just return a random number up to the input */
+        return (int)(Math.random()*max);
     }
 
     public static int random_number_range(int start, int stop){
+        /**loops intill a random number higher then start is found and returns that */
         int value = (int)(Math.random()*stop);
-        while (value < start){return random_number_range(start, stop);}
+        while (value < start){
+            return random_number_range(start, stop);
+        }
         return value;
     }
 
     public static HashSet<Integer> create_hash_int_range(int start, int stop){
+        /**creates a HashSet of all the numbers from the start to the stop value */
         HashSet<Integer> range_hash = new HashSet<>();
         do {
             range_hash.add(start);
