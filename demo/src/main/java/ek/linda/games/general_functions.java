@@ -17,23 +17,22 @@ public class general_functions {
         return "not found";
     }
 
-    public static boolean regex_find_text(String text_input, String text_seartch){
-        /**Simpel regex finder to find a specific input in the seartch text */
-        Pattern sertch = Pattern.compile(text_seartch);
-        Matcher text = sertch.matcher(text_input);
+    public static boolean regex_find_text(String text_input, String text_search){
+        /**Simpel regex finder to find a specific input in the search text */
+        Pattern sketcher = Pattern.compile(text_search);
+        Matcher text = sketcher.matcher(text_input);
         return text.find();
     }
 
     @SuppressWarnings("ConvertToTryWithResources")
     public static String ask_the_player(String text_output){
-        /**A finction to ask the player for an input.
+        /**A function to ask the player for an input.
          * The text output is the string the player will se. 
          * The output will convert the string the player enters to have the first letter capitalized.
          */
         Scanner player = new Scanner(System.in);
         System.out.println(text_output);
         String player_input = player.nextLine();
-        player.close();
         return player_input.substring(0, 1).toUpperCase() + player_input.substring(1).toLowerCase();}
     
     public static int computer_random(int max){
@@ -42,7 +41,7 @@ public class general_functions {
     }
 
     public static int random_number_range(int start, int stop){
-        /**loops intill a random number higher then start is found and returns that */
+        /**loops until a random number higher than start is found and returns that */
         int value = (int)(Math.random()*stop);
         while (value < start){
             return random_number_range(start, stop);

@@ -16,23 +16,23 @@ public class guess_number implements Game{
     }
 
     String loop_for_wining(Integer computer, Integer chanses){
-        /**Function for the actual game loop. Takes in the computer number and the chanses. 
-         * continues untill the number is guessed or chanses goes to 0.
+        /**Function for the actual game loop. Takes in the computer number and the changes.
+         * continues until the number is guessed or changes goes to 0.
          */
-        int original_chanses = chanses;
+        int original_changes = chanses;
         String player_guess;
         do{
             if (chanses == 0){
                 return "Sorry, you lose.";
             }
             else{
-            player_guess = general_functions.ask_the_player(chanses + " chanses left\n" + "Make a quess of a number: ");
+            player_guess = general_functions.ask_the_player(chanses + " changes left\n" + "Make a quests of a number: ");
             System.out.println(higher_or_lower(computer, Integer.parseInt(player_guess)));
             chanses --;
             }
         }
         while (!Objects.equals(player_guess, computer.toString()));
-    return "Congratulations you win. You needed " + (original_chanses - chanses) + " chanses";
+    return "Congratulations you win. You needed " + (original_changes - chanses) + " changes";
     }
 
     int select_dificualty(){
@@ -70,6 +70,6 @@ public class guess_number implements Game{
             if (!general_functions.regex_find_text("Yes, yes",(general_functions.ask_the_player("Play again? Yes/No")))){
                 game_on=false;
             }
-        } while (game_on == true);
+        } while (game_on);
     }
 }
