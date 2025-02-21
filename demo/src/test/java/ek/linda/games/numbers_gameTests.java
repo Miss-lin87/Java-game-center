@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class numbers_gameTests{
+class numbers_gameTests{
     numbers_game game = new numbers_game();
 
     @Test
@@ -30,12 +31,11 @@ public class numbers_gameTests{
         Assertions.assertEquals(4, game.check_bulls(new ArrayList<>(List.of(1,5,7,9)), new ArrayList<>(List.of(1,5,7,9))));
     }
 
-    /*@Test
+    @Test
     void guess_test(){
         List<Integer> guess = game.make_array_guess("1465");
         Assertions.assertEquals(List.of(1,4,6,5), guess);
         Assertions.assertNotEquals(List.of(2,6,8,9), game.make_array_guess("8629"));
         Assertions.assertEquals(List.of(1,2,3,4), game.make_array_guess("1234"));
-    }*/
-
+    }
 }

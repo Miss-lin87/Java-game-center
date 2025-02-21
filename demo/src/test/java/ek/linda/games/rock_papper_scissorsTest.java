@@ -6,16 +6,16 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class rock_papper_scissorsTest {
+class rock_papper_scissorsTest {
     rock_papper_scissors game = new rock_papper_scissors();
 
     @Test
     void computer_pick_test(){
         List<String> options = new ArrayList<>(List.of("Rock", "Papper", "Scissors"));
         Assertions.assertTrue(options.contains(game.computer_pick()));
-        Assertions.assertFalse("rock".equals(game.computer_pick()));
-        Assertions.assertFalse("cat".equals(game.computer_pick()));
-        Assertions.assertFalse("papper".equals(game.computer_pick()));
+        Assertions.assertNotEquals("rock", game.computer_pick());
+        Assertions.assertNotEquals("cat", game.computer_pick());
+        Assertions.assertNotEquals("papper", game.computer_pick());
     }
 
     @Test

@@ -48,11 +48,11 @@ public class numbers_game implements Game{
         return numbers;
     }
 
-    List<Integer> make_array_guess(String guess){
+    List<Integer> make_array_guess(String guess) {
         /** All this function will do is to parse the guess from the player to a List<Integer> */
         List<Integer> guessarray = new ArrayList<>();
         for (String elem : guess.split("")) {
-            guessarray.add(Integer.getInteger(elem));
+            guessarray.add(Integer.valueOf(elem));
         }
         return guessarray;
     }

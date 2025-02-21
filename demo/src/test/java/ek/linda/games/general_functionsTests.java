@@ -7,8 +7,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class general_functionsTests {
-    general_functions func = new general_functions();
+class general_functionsTests {
 
     @Test
     void random_test(){
@@ -31,7 +30,7 @@ public class general_functionsTests {
     }
 
     @Test
-    void reqex_find_test(){
+    void regex_find_test(){
         Assertions.assertTrue(general_functions.regex_find_text("Yes", "Y"));
         Assertions.assertTrue(general_functions.regex_find_text("This is a test", "is"));
         Assertions.assertFalse(general_functions.regex_find_text("This can not find stuff", "Q"));

@@ -3,7 +3,7 @@ package ek.linda.games;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class hangmanTest {
+class hangmanTest {
     hangman game = new hangman();
 
     @Test
@@ -16,11 +16,11 @@ public class hangmanTest {
     @Test
     void reveal_test(){
         String mock = "cat";
-        Assertions.assertTrue("_a_".equals(game.reveal_word("a", mock, "___")));
-        Assertions.assertTrue("c__".equals(game.reveal_word("c", mock, "___")));
-        Assertions.assertTrue("__t".equals(game.reveal_word("t", mock, "___")));
-        Assertions.assertFalse("__t".equals(game.reveal_word("a", mock, "___")));
-        Assertions.assertFalse("_c_".equals(game.reveal_word("c", mock, "___")));
+        Assertions.assertEquals("_a_", game.reveal_word("a", mock, "___"));
+        Assertions.assertEquals("c__", game.reveal_word("c", mock, "___"));
+        Assertions.assertEquals("__t", game.reveal_word("t", mock, "___"));
+        Assertions.assertNotEquals("__t", game.reveal_word("a", mock, "___"));
+        Assertions.assertNotEquals("_c_", game.reveal_word("c", mock, "___"));
     }
 
     @Test
